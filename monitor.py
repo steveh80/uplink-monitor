@@ -10,7 +10,7 @@ def internet(host="8.8.8.8", port=53, timeout=3):
 
 def statusChange(newstate):
 	# push update
-	print(datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S") + " internet connection is " + ("up" if lastState else "down"))
+	print(datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S") + " internet connection is " + ("up" if newstate else "down"))
 
 
 
