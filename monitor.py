@@ -1,4 +1,7 @@
-import socket, time, datetime
+import socket, time, datetime, logging
+
+logging.basicConfig(filename="/logs/monitor.log", filemode="a", level=logging.DEBUG, format='%(asctime)s %(message)s')  
+
 
 def internet(host="8.8.8.8", port=53, timeout=3):
 	try:
@@ -11,12 +14,14 @@ def internet(host="8.8.8.8", port=53, timeout=3):
 def statusChange(newstate):
 	# push update
 	print(datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S") + " internet connection is " + ("up" if newstate else "down"))
+	logging.info("internet connection is " + ("up" if newstate else "down"))
 
 
 
 lastState = internet()
 
 print(datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S") + " uplink monitor started")
+logging.info("uplink monitor started")
 statusChange(lastState)
 
 while True:
